@@ -62,7 +62,7 @@ export default function Navbar() {
               </Link>
             ))}
             <Link
-              href="mailto:hello@example.com"
+              href="mailto:jobs.andrewliam@use.startmail.com"
               onClick={() => setIsOpen(false)}
               className={`rounded-full bg-[var(--cta-bg)] px-5 py-2.5 font-sans text-sm font-semibold text-[var(--cta-text)] transition-all hover:-translate-y-0.5 hover:shadow-lg md:ml-2 ${
                 isOpen ? "block w-full text-center" : ""
