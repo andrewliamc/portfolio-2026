@@ -3,47 +3,14 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  Linkedin,
-  Github,
-  Youtube,
-  Instagram,
-  Menu,
-  X,
-} from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { socialLinks } from "@/data/social";
 
 const navLinks = [
   { href: "#home", label: "home" },
   { href: "#about", label: "about me" },
   { href: "#work", label: "work" },
   { href: "#skills", label: "skills" },
-];
-
-function TikTokIcon({ size = 18 }: { size?: number }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-    >
-      <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
-    </svg>
-  );
-}
-
-const socialLinks = [
-  { href: "https://linkedin.com", icon: Linkedin, label: "LinkedIn" },
-  { href: "https://github.com", icon: Github, label: "GitHub" },
-  { href: "https://youtube.com", icon: Youtube, label: "YouTube" },
-  { href: "https://instagram.com", icon: Instagram, label: "Instagram" },
-  { href: "https://tiktok.com", icon: TikTokIcon, label: "TikTok" },
 ];
 
 export default function Navbar() {

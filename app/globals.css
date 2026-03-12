@@ -1,26 +1,66 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #FAF9F6;
+  --bg-alt: #FFFEF9;
+  --navbar: #1a3d2e;
+  --navbar-hover: #152d22;
+  --on-dark: #FFFFFF;
+  --on-dark-muted: #E8E6E1;
+  --primary-text: #1a1a1a;
+  --secondary-text: #4a4a4a;
+  --accent: #5a7d6e;
+  --cta-bg: #FFFFFF;
+  --cta-text: #1a1a1a;
+  --card-1: #f0ede8;
+  --card-2: #e8ebe8;
+  --card-3: #f5f2ed;
+  --card-4: #e8e9eb;
+  --marquee-bg: #e8e6e1;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-bg-alt: var(--bg-alt);
+  --color-navbar: var(--navbar);
+  --color-navbar-hover: var(--navbar-hover);
+  --color-on-dark: var(--on-dark);
+  --color-on-dark-muted: var(--on-dark-muted);
+  --color-primary: var(--primary-text);
+  --color-secondary: var(--secondary-text);
+  --color-accent: var(--accent);
+  --color-cta-bg: var(--cta-bg);
+  --color-cta-text: var(--cta-text);
+  --color-card-1: var(--card-1);
+  --color-card-2: var(--card-2);
+  --color-card-3: var(--card-3);
+  --color-card-4: var(--card-4);
+  --color-marquee-bg: var(--marquee-bg);
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-syne), ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  .font-display {
+    font-family: var(--font-syne), ui-sans-serif, system-ui, sans-serif;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--primary-text);
+  font-family: var(--font-sans);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
 }

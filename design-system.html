@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FAF9F6;
+      --bg-alt: #FFFEF9;
+      --navbar: #1a3d2e;
+      --navbar-hover: #152d22;
+      --on-dark: #FFFFFF;
+      --on-dark-muted: #E8E6E1;
+      --primary-text: #1a1a1a;
+      --secondary-text: #4a4a4a;
+      --accent: #5a7d6e;
+      --cta-bg: #FFFFFF;
+      --cta-text: #1a1a1a;
+      --card-1: #f0ede8;
+      --card-2: #e8ebe8;
+      --card-3: #f5f2ed;
+      --card-4: #e8e9eb;
+      --marquee-bg: #e8e6e1;
+      --font-heading: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--primary-text);
+      margin: 0;
+      padding: 48px 24px 96px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0 0 8px;
+    }
+
+    h2 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--secondary-text);
+      margin: 48px 0 24px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--primary-text);
+    }
+
+    h2:first-of-type {
+      margin-top: 0;
+    }
+
+    p {
+      color: var(--secondary-text);
+      margin: 0 0 16px;
+    }
+
+    /* Colors */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .color-swatch {
+      text-align: center;
+    }
+
+    .color-swatch__box {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .color-swatch__label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--primary-text);
+    }
+
+    .color-swatch__hex {
+      font-size: 0.7rem;
+      color: var(--secondary-text);
+      font-family: monospace;
+    }
+
+    /* Typography */
+    .type-spec {
+      margin-bottom: 32px;
+      padding: 24px;
+      background: var(--bg-alt);
+      border-radius: 12px;
+    }
+
+    .type-spec__label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    .type-spec--syne-h1 {
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .type-spec--syne-h2 {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    .type-spec--syne-h3 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 500;
+    }
+
+    .type-spec--logo {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+
+    .type-spec--body {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--secondary-text);
+    }
+
+    .type-spec--body-lg {
+      font-family: var(--font-body);
+      font-size: 1.125rem;
+      font-weight: 400;
+      color: var(--secondary-text);
+    }
+
+    /* Components */
+    .component-demo {
+      margin-bottom: 32px;
+      padding: 24px;
+      background: var(--bg-alt);
+      border-radius: 12px;
+    }
+
+    .component-demo__label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+
+    /* Navbar */
+    .navbar-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .navbar-pill {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      padding: 12px 24px;
+      background: var(--navbar);
+      border-radius: 9999px;
+      max-width: 560px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .navbar-social-pill {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 16px;
+      background: var(--navbar);
+      border-radius: 9999px;
+    }
+
+    .navbar-social-pill__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--on-dark);
+      text-decoration: none;
+      border-radius: 50%;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .navbar-social-pill__icon:hover {
+      color: var(--on-dark-muted);
+      background: rgba(255,255,255,0.1);
+    }
+
+    .navbar-pill__logo {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      color: var(--on-dark);
+    }
+
+    .navbar-pill__links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .navbar-pill__link {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--on-dark);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .navbar-pill__link:hover {
+      color: var(--on-dark-muted);
+    }
+
+    .navbar-pill__cta {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 10px 20px;
+      background: var(--cta-bg);
+      color: var(--cta-text);
+      border: none;
+      border-radius: 9999px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .navbar-pill__cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    /* Tech badge */
+    .tech-badge {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 6px 14px;
+      background: var(--marquee-bg);
+      color: var(--primary-text);
+      border-radius: 9999px;
+      margin: 4px;
+    }
+
+    /* Spacing */
+    .spacing-demo {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .spacing-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent);
+      color: var(--on-dark);
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Portfolio Design System</h1>
+    <p>Reference for the Andrew portfolio website. Open this file in a browser to review colors, typography, and components.</p>
+
+    <h2>Colors</h2>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="color-swatch__box" style="background: var(--bg)"></div>
+        <div class="color-swatch__label">Background</div>
+        <div class="color-swatch__hex">#FAF9F6</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch__box" style="background: var(--bg-alt)"></div>
+        <div class="color-swatch__label">Background Alt</div>
+        <div class="color-swatch__hex">#FFFEF9</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch__box" style="background: var(--navbar)"></div>
+        <div class="color-swatch__label">Navbar</div>
+        <div class="color-swatch__hex">#1a3d2e</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch__box" style="background: var(--navbar-hover)"></div>
+        <div class="color-swatch__label">Navbar Hover</div>
+        <div class="color-swatch__hex">#152d22</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch__box" style="background: var(--on-dark); border: 1px solid #ddd"></div>
+        <div class="color-swatch__label">On Dark (White)</div>
+        <div class="color-swatch__hex">#FFFFFF</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch__box" style="background: var(--on-dark-muted)"></div>
+        <div class="color-swatch__label">On Dark Muted</div>
+        <div class="color-swatch__hex">#E8E6E1</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch__box" style="background: var(--primary-text)"></div>
+        <div class="color-swatch__label">Primary Text</div>
+        <div class="color-swatch__hex">#1a1a1a</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch__box" style="background: var(--secondary-text)"></div>
+        <div class="color-swatch__label">Secondary Text</div>
+        <div class="color-swatch__hex">#4a4a4a</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch__box" style="background: var(--accent)"></div>
+        <div class="color-swatch__label">Accent</div>
+        <div class="color-swatch__hex">#5a7d6e</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch__box" style="background: var(--marquee-bg)"></div>
+        <div class="color-swatch__label">Tech Marquee</div>
+        <div class="color-swatch__hex">#e8e6e1</div>
+      </div>
+    </div>
+
+    <h3 style="font-family: var(--font-heading); margin-top: 32px; font-size: 1rem;">Featured Work Cards</h3>
+    <div class="color-grid" style="margin-top: 8px;">
+      <div class="color-swatch">
+        <div class="color-swatch__box" style="background: var(--card-1)"></div>
+        <div class="color-swatch__label">Card 1 (Warm Sand)</div>
+        <div class="color-swatch__hex">#f0ede8</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch__box" style="background: var(--card-2)"></div>
+        <div class="color-swatch__label">Card 2 (Sage Wash)</div>
+        <div class="color-swatch__hex">#e8ebe8</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch__box" style="background: var(--card-3)"></div>
+        <div class="color-swatch__label">Card 3 (Cream)</div>
+        <div class="color-swatch__hex">#f5f2ed</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch__box" style="background: var(--card-4)"></div>
+        <div class="color-swatch__label">Card 4 (Cool Gray)</div>
+        <div class="color-swatch__hex">#e8e9eb</div>
+      </div>
+    </div>
+
+    <h2>Typography</h2>
+
+    <div class="type-spec">
+      <div class="type-spec__label">Syne — Hero H1 (3rem / 48px)</div>
+      <div class="type-spec type-spec--syne-h1">Hi, my name is Andrew</div>
+    </div>
+
+    <div class="type-spec">
+      <div class="type-spec__label">Syne — Section Headline (2rem / 32px)</div>
+      <div class="type-spec type-spec--syne-h2">I am a UI Engineer.</div>
+    </div>
+
+    <div class="type-spec">
+      <div class="type-spec__label">Syne — Subheadline (1.25rem / 20px)</div>
+      <div class="type-spec type-spec--syne-h3">Featured Work</div>
+    </div>
+
+    <div class="type-spec">
+      <div class="type-spec__label">Logo — ANDREW (all caps, tight kerning)</div>
+      <div class="type-spec type-spec--logo">ANDREW</div>
+    </div>
+
+    <div class="type-spec">
+      <div class="type-spec__label">DM Sans — Body Large (1.125rem)</div>
+      <div class="type-spec type-spec--body-lg">I'm a UI Engineer who loves building interfaces that are both beautiful and functional. I combine design thinking with clean code.</div>
+    </div>
+
+    <div class="type-spec">
+      <div class="type-spec__label">DM Sans — Body (1rem)</div>
+      <div class="type-spec type-spec--body">Supporting text for descriptions, captions, and project details. Uses the secondary text color for hierarchy.</div>
+    </div>
+
+    <h2>Components</h2>
+
+    <div class="component-demo">
+      <div class="component-demo__label">Navbar — Two Pills (Main Nav + Social)</div>
+      <div class="navbar-wrapper">
+        <nav class="navbar-pill">
+          <span class="navbar-pill__logo">ANDREW</span>
+          <div class="navbar-pill__links">
+            <a href="#" class="navbar-pill__link">home</a>
+            <a href="#" class="navbar-pill__link">about me</a>
+            <a href="#" class="navbar-pill__link">work</a>
+            <a href="#" class="navbar-pill__link">skills</a>
+          </div>
+          <a href="mailto:hello@example.com" class="navbar-pill__cta">let's chat</a>
+        </nav>
+        <div class="navbar-social-pill">
+          <a href="#" class="navbar-social-pill__icon" aria-label="LinkedIn">in</a>
+          <a href="#" class="navbar-social-pill__icon" aria-label="GitHub">gh</a>
+          <a href="#" class="navbar-social-pill__icon" aria-label="YouTube">yt</a>
+          <a href="#" class="navbar-social-pill__icon" aria-label="Instagram">ig</a>
+          <a href="#" class="navbar-social-pill__icon" aria-label="TikTok">tt</a>
+        </div>
+      </div>
+      <p style="margin-top: 12px; font-size: 0.8rem; color: var(--secondary-text);">Social pill uses text placeholders (in, gh, yt, ig, tt); implementation will use Lucide/React Icons.</p>
+    </div>
+
+    <div class="component-demo">
+      <div class="component-demo__label">Let's chat CTA (standalone)</div>
+      <a href="#" class="navbar-pill__cta">Let's chat</a>
+    </div>
+
+    <div class="component-demo">
+      <div class="component-demo__label">Tech Marquee Badges</div>
+      <div>
+        <span class="tech-badge">React</span>
+        <span class="tech-badge">Next.js</span>
+        <span class="tech-badge">Tailwind CSS</span>
+        <span class="tech-badge">TypeScript</span>
+        <span class="tech-badge">Figma</span>
+      </div>
+    </div>
+
+    <h2>Spacing Scale</h2>
+    <p>Reference for consistent padding and margins (4, 8, 16, 24, 32, 48, 64px).</p>
+    <div class="spacing-demo">
+      <div class="spacing-box" style="width: 4px; height: 24px;"></div>
+      <div class="spacing-box" style="width: 8px; height: 24px;"></div>
+      <div class="spacing-box" style="width: 16px; height: 24px;"></div>
+      <div class="spacing-box" style="width: 24px; height: 24px;"></div>
+      <div class="spacing-box" style="width: 32px; height: 24px;"></div>
+      <div class="spacing-box" style="width: 48px; height: 24px;"></div>
+      <div class="spacing-box" style="width: 64px; height: 24px;"></div>
+    </div>
+    <div style="margin-top: 8px; font-size: 0.8rem; color: var(--secondary-text);">
+      4px · 8px · 16px · 24px · 32px · 48px · 64px
+    </div>
+  </div>
+</body>
+</html>
